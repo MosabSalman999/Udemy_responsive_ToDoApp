@@ -36,59 +36,30 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(
                     height: 40.0,
                   ),
-                  TextFormField(
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    onFieldSubmitted: (String value) {
-                      print(value);
-                    },
-                    onChanged: (String value) {
-                      print(value);
-                    },
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "Email address must not be empty";
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(
-                      labelText: 'Email Address',
-                      prefixIcon: Icon(
-                        Icons.email,
-                      ),
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
+                  defaultFormField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (value!.isEmpty || value == null) {
+                          return 'email must not be empty';
+                        }
+                      },
+                      labelText: "Email Address",
+                      prefixIcon: Icons.email),
                   const SizedBox(
                     height: 15.0,
                   ),
-                  TextFormField(
-                    controller: passwordController,
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: true,
-                    onFieldSubmitted: (String value) {
-                      print(value);
-                    },
-                    onChanged: (String value) {
-                      print(value);
-                    },
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "Password Must be not empty";
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(
+                  defaultFormField(
+                      controller: passwordController,
+                      keyboardType: TextInputType.visiblePassword,
+                      validator: (value) {
+                        if (value!.isEmpty || value == null) {
+                          return 'password is too short';
+                        }
+                      },
                       labelText: 'Password',
-                      prefixIcon: Icon(
-                        Icons.lock,
-                      ),
-                      suffixIcon: Icon(
-                        Icons.remove_red_eye,
-                      ),
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
+                      prefixIcon: Icons.lock,
+                      suffixIcon: Icons.remove_red_eye),
                   const SizedBox(
                     height: 20.0,
                   ),
