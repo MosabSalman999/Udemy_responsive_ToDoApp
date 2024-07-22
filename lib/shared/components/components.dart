@@ -4,7 +4,7 @@ Widget defaultButton({
   width = double.infinity,
   @required Color background = Colors.blue,
   bool isUpperCase = true,
-  double radius = 3.0,
+  double radius = 10.0,
   @required Function? function,
   required String text,
 }) =>
@@ -58,7 +58,11 @@ Widget defaultFormField({
         ),
         suffixIcon: suffixIcon != null
             ? IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (suffixPressed != null) {
+                    suffixPressed();
+                  }
+                },
                 icon: Icon(
                   suffixIcon,
                 ),
