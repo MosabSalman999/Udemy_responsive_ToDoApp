@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 // 1. first class provide widget
 // 2. second class provide state from this widget
 
-class CounterScreen extends StatefulWidget
-{
+class CounterScreen extends StatefulWidget {
+  const CounterScreen({super.key});
+
   @override
   _CounterScreenState createState() => _CounterScreenState();
 }
 
-class _CounterScreenState extends State<CounterScreen>
-{
+class _CounterScreenState extends State<CounterScreen> {
   int counter = 1;
 
   // 1. constructor
@@ -22,8 +22,7 @@ class _CounterScreenState extends State<CounterScreen>
   // 3. build
 
   @override
-  void initState()
-  {
+  void initState() {
     super.initState();
   }
 
@@ -31,7 +30,7 @@ class _CounterScreenState extends State<CounterScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Counter',
         ),
       ),
@@ -40,15 +39,13 @@ class _CounterScreenState extends State<CounterScreen>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton(
-              onPressed: ()
-              {
-                setState(()
-                {
+              onPressed: () {
+                setState(() {
                   counter--;
                   print(counter);
                 });
               },
-              child: Text(
+              child: const Text(
                 'MINUS',
               ),
             ),
@@ -58,21 +55,20 @@ class _CounterScreenState extends State<CounterScreen>
               ),
               child: Text(
                 '$counter',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 50.0,
                   fontWeight: FontWeight.w900,
                 ),
               ),
             ),
             TextButton(
-              onPressed: ()
-              {
+              onPressed: () {
                 setState(() {
                   counter++;
                   print(counter);
                 });
               },
-              child: Text(
+              child: const Text(
                 'PLUS',
               ),
             ),

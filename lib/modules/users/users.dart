@@ -65,11 +65,13 @@ class UsersScreen extends StatelessWidget {
     ),
   ];
 
+  UsersScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Users',
         ),
       ),
@@ -91,47 +93,46 @@ class UsersScreen extends StatelessWidget {
   }
 
   Widget buildUserItem(UserModel user) => Padding(
-    padding: const EdgeInsets.all(20.0),
-    child: Row(
-      children: [
-        CircleAvatar(
-          radius: 25.0,
-          child: Text(
-            '${user.id}',
-            style: TextStyle(
-              fontSize: 25.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        SizedBox(
-          width: 20.0,
-        ),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        padding: const EdgeInsets.all(20.0),
+        child: Row(
           children: [
-            Text(
-              '${user.name}',
-              style: TextStyle(
-                fontSize: 25.0,
-                fontWeight: FontWeight.bold,
+            CircleAvatar(
+              radius: 25.0,
+              child: Text(
+                '${user.id}',
+                style: const TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-            Text(
-              '${user.phone}',
-              style: TextStyle(
-                color: Colors.grey,
-              ),
+            const SizedBox(
+              width: 20.0,
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  user.name,
+                  style: const TextStyle(
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  user.phone,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
-      ],
-    ),
-  );
+      );
 
 // 1. build item
 // 2. build list
 // 3. add item to list
 }
-

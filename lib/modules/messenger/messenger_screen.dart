@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class MessengerScreen extends StatelessWidget {
+  const MessengerScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +13,7 @@ class MessengerScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0.0,
         titleSpacing: 20.0,
-        title: Row(
+        title: const Row(
           children: [
             CircleAvatar(
               radius: 20.0,
@@ -31,7 +33,7 @@ class MessengerScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: CircleAvatar(
+            icon: const CircleAvatar(
               radius: 15.0,
               backgroundColor: Colors.blue,
               child: Icon(
@@ -43,7 +45,7 @@ class MessengerScreen extends StatelessWidget {
             onPressed: () {},
           ),
           IconButton(
-            icon: CircleAvatar(
+            icon: const CircleAvatar(
               radius: 15.0,
               backgroundColor: Colors.blue,
               child: Icon(
@@ -69,10 +71,10 @@ class MessengerScreen extends StatelessWidget {
                   ),
                   color: Colors.grey[300],
                 ),
-                padding: EdgeInsets.all(
+                padding: const EdgeInsets.all(
                   5.0,
                 ),
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(
                       Icons.search,
@@ -86,32 +88,30 @@ class MessengerScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
-              Container(
+              SizedBox(
                 height: 100.0,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => buildStoryItem(),
-                  separatorBuilder: (context, index) =>
-                      SizedBox(
-                        width: 20.0,
-                      ),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 20.0,
+                  ),
                   itemCount: 5,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               ListView.separated(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context, index) => buildChatItem(),
-                separatorBuilder: (context, index) =>
-                    SizedBox(
-                      height: 20.0,
-                    ),
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 20.0,
+                ),
                 itemCount: 15,
               ),
             ],
@@ -125,12 +125,10 @@ class MessengerScreen extends StatelessWidget {
   // 2. build list
   // 3. add item to list
 
-
   // arrow function
-  Widget buildChatItem() =>
-      Row(
+  Widget buildChatItem() => Row(
         children: [
-          Stack(
+          const Stack(
             alignment: AlignmentDirectional.bottomEnd,
             children: [
               CircleAvatar(
@@ -139,7 +137,7 @@ class MessengerScreen extends StatelessWidget {
                     'https://avatars.githubusercontent.com/u/34492145?v=4'),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.only(
+                padding: EdgeInsetsDirectional.only(
                   bottom: 3.0,
                   end: 3.0,
                 ),
@@ -150,14 +148,14 @@ class MessengerScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             width: 20.0,
           ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Abdullah Ahmed Abdullah Ahmed Abdullah Ahmed Abdullah Ahmed',
                   style: TextStyle(
                     fontSize: 16.0,
@@ -166,13 +164,12 @@ class MessengerScreen extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5.0,
                 ),
                 Row(
-                  children:
-                  [
-                    Expanded(
+                  children: [
+                    const Expanded(
                       child: Text(
                         'hello my name is abdullah ahmed hello my name is abdullah ahmed',
                         maxLines: 1,
@@ -186,13 +183,13 @@ class MessengerScreen extends StatelessWidget {
                       child: Container(
                         width: 7.0,
                         height: 7.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.blue,
                           shape: BoxShape.circle,
                         ),
                       ),
                     ),
-                    Text(
+                    const Text(
                       '02:00 pm',
                     ),
                   ],
@@ -203,10 +200,9 @@ class MessengerScreen extends StatelessWidget {
         ],
       );
 
-  Widget buildStoryItem() =>
-      Container(
+  Widget buildStoryItem() => SizedBox(
         width: 60.0,
-        child: Column(
+        child: const Column(
           children: [
             Stack(
               alignment: AlignmentDirectional.bottomEnd,
@@ -217,7 +213,7 @@ class MessengerScreen extends StatelessWidget {
                       'https://avatars.githubusercontent.com/u/34492145?v=4'),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.only(
+                  padding: EdgeInsetsDirectional.only(
                     bottom: 3.0,
                     end: 3.0,
                   ),

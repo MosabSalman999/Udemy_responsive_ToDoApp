@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../bmi_result_screen/bmi_result_screen.dart';
 
 class BmiScreen extends StatefulWidget {
+  const BmiScreen({super.key});
+
   @override
   _BmiScreenState createState() => _BmiScreenState();
 }
@@ -20,13 +22,12 @@ class _BmiScreenState extends State<BmiScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'BMI Calculator',
         ),
       ),
       body: Column(
-        children:
-        [
+        children: [
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -40,6 +41,12 @@ class _BmiScreenState extends State<BmiScreen> {
                         });
                       },
                       child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            10.0,
+                          ),
+                          color: isMale ? Colors.blue : Colors.grey[400],
+                        ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -60,16 +67,10 @@ class _BmiScreenState extends State<BmiScreen> {
                             ),
                           ],
                         ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            10.0,
-                          ),
-                          color: isMale ? Colors.blue : Colors.grey[400],
-                        ),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20.0,
                   ),
                   Expanded(
@@ -80,6 +81,12 @@ class _BmiScreenState extends State<BmiScreen> {
                         });
                       },
                       child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            10.0,
+                          ),
+                          color: isMale ? Colors.grey[400] : Colors.blue,
+                        ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -100,12 +107,6 @@ class _BmiScreenState extends State<BmiScreen> {
                             ),
                           ],
                         ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            10.0,
-                          ),
-                          color: isMale ? Colors.grey[400] : Colors.blue,
-                        ),
                       ),
                     ),
                   ),
@@ -119,6 +120,12 @@ class _BmiScreenState extends State<BmiScreen> {
                 horizontal: 20.0,
               ),
               child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    10.0,
+                  ),
+                  color: Colors.grey[400],
+                ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -165,12 +172,6 @@ class _BmiScreenState extends State<BmiScreen> {
                     ),
                   ],
                 ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    10.0,
-                  ),
-                  color: Colors.grey[400],
-                ),
               ),
             ),
           ),
@@ -178,10 +179,15 @@ class _BmiScreenState extends State<BmiScreen> {
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Row(
-                children:
-                [
+                children: [
                   Expanded(
                     child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          10.0,
+                        ),
+                        color: Colors.grey[400],
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -230,19 +236,19 @@ class _BmiScreenState extends State<BmiScreen> {
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20.0,
+                  ),
+                  Expanded(
+                    child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
                           10.0,
                         ),
                         color: Colors.grey[400],
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20.0,
-                  ),
-                  Expanded(
-                    child: Container(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -291,12 +297,6 @@ class _BmiScreenState extends State<BmiScreen> {
                           ),
                         ],
                       ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          10.0,
-                        ),
-                        color: Colors.grey[400],
-                      ),
                     ),
                   ),
                 ],
@@ -323,7 +323,7 @@ class _BmiScreenState extends State<BmiScreen> {
                 );
               },
               height: 50.0,
-              child: Text(
+              child: const Text(
                 'CALCULATE',
                 style: TextStyle(
                   color: Colors.white,

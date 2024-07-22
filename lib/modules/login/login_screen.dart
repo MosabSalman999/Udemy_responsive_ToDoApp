@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_flutter/shared/components/components.dart';
+
+// reusable components
+
+// 1 . timing
+// 2 . refactor
+// 3 . quality
 
 class LoginScreen extends StatelessWidget {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +24,14 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Login',
                   style: TextStyle(
                     fontSize: 40.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40.0,
                 ),
                 TextFormField(
@@ -34,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                   onChanged: (String value) {
                     print(value);
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Email Address',
                     prefixIcon: Icon(
                       Icons.email,
@@ -42,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15.0,
                 ),
                 TextFormField(
@@ -55,7 +64,7 @@ class LoginScreen extends StatelessWidget {
                   onChanged: (String value) {
                     print(value);
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Password',
                     prefixIcon: Icon(
                       Icons.lock,
@@ -66,37 +75,38 @@ class LoginScreen extends StatelessWidget {
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
-                Container(
-                  width: double.infinity,
-                  color: Colors.blue,
-                  child: MaterialButton(
-                    onPressed: () {
-                      print(emailController.text);
-                      print(passwordController.text);
-                    },
-                    child: Text(
-                      'LOGIN',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                defaultButton(
+                  function: () {
+                    print(emailController.text);
+                    print(passwordController.text);
+                  },
+                  text: 'login',
                 ),
-                SizedBox(
+                const SizedBox(
+                  height: 10.0,
+                ),
+                defaultButton(
+                  function: () {
+                    print(emailController.text);
+                    print(passwordController.text);
+                  },
+                  text: 'login',
+                ),
+                const SizedBox(
                   height: 10.0,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Don\'t have an account?',
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         'Register Now',
                       ),
                     ),
