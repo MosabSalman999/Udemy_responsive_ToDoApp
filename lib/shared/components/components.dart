@@ -18,7 +18,11 @@ Widget defaultButton({
         color: background,
       ),
       child: MaterialButton(
-        onPressed: () {},
+        onPressed: () {
+          if (function != null) {
+            function();
+          }
+        },
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
           style: TextStyle(
@@ -30,33 +34,33 @@ Widget defaultButton({
 
 Widget defaultFormField({
   required TextEditingController controller,
-  required TextInputType type,
-  Function? onSubmit,
-  Function? onChange,
+  required TextInputType keyboardType,
+  void Function(String)? onFieldSubmitted,
+  void Function(String)? onChanged,
   bool isPassword = false,
-  Function? validate,
-  String? label,
-  IconData? prefix,
-  IconData? suffix,
+  required String? Function(String?) validator,
+  required String labelText,
+  required IconData prefixIcon,
+  IconData? suffixIcon,
   Function? suffixPressed,
 }) =>
     TextFormField(
       controller: controller,
-      keyboardType: type,
+      keyboardType: keyboardType,
       obscureText: isPassword,
-      onFieldSubmitted: onSubmit,
-      onChanged: onChange,
-      validator: validate,
+      onFieldSubmitted: onFieldSubmitted,
+      onChanged: onChanged,
+      validator: validator,
       decoration: InputDecoration(
-        labelText: label,
+        labelText: labelText,
         prefixIcon: Icon(
-          prefix,
+          prefixIcon,
         ),
-        suffixIcon: suffix != null
+        suffixIcon: suffixIcon != null
             ? IconButton(
-                onPressed: suffixPressed,
+                onPressed: () {},
                 icon: Icon(
-                  suffix,
+                  suffixIcon,
                 ),
               )
             : null,

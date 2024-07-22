@@ -46,7 +46,7 @@ class LoginScreen extends StatelessWidget {
                       print(value);
                     },
                     validator: (value) {
-                      if (value == null) {
+                      if (value == null || value.isEmpty) {
                         return "Email address must not be empty";
                       }
                       return null;
@@ -73,7 +73,7 @@ class LoginScreen extends StatelessWidget {
                       print(value);
                     },
                     validator: (value) {
-                      if (value == null) {
+                      if (value == null || value.isEmpty) {
                         return "Password Must be not empty";
                       }
                       return null;
@@ -109,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                       print(emailController.text);
                       print(passwordController.text);
                     },
-                    text: 'login',
+                    text: 'register',
                   ),
                   const SizedBox(
                     height: 10.0,
