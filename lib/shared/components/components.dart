@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget defaultButton({
   width = double.infinity,
-  @required Color background = Colors.blue,
+  Color background = Colors.blue,
   bool isUpperCase = true,
   double radius = 10.0,
   @required Function? function,
@@ -25,7 +25,7 @@ Widget defaultButton({
         },
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
           ),
         ),
@@ -43,6 +43,7 @@ Widget defaultFormField({
   required IconData prefixIcon,
   IconData? suffixIcon,
   Function? suffixPressed,
+  void Function()? onTab,
 }) =>
     TextFormField(
       controller: controller,
@@ -50,6 +51,7 @@ Widget defaultFormField({
       obscureText: isPassword,
       onFieldSubmitted: onFieldSubmitted,
       onChanged: onChanged,
+      onTap: onTab,
       validator: validator,
       decoration: InputDecoration(
         labelText: labelText,
