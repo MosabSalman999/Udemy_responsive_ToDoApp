@@ -44,12 +44,14 @@ Widget defaultFormField({
   IconData? suffixIcon,
   Function? suffixPressed,
   void Function()? onTab,
+  bool isClickable = true,
 }) =>
     TextFormField(
       controller: controller,
       keyboardType: keyboardType,
       obscureText: isPassword,
       onFieldSubmitted: onFieldSubmitted,
+      enabled: isClickable,
       onChanged: onChanged,
       onTap: onTab,
       validator: validator,
