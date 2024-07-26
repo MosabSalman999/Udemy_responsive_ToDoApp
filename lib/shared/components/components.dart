@@ -75,3 +75,32 @@ Widget defaultFormField({
         border: const OutlineInputBorder(),
       ),
     );
+
+Widget buildTaskItem() => Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: const Row(
+        children: [
+          CircleAvatar(
+            radius: 40.0,
+            child: Text(
+              '02:00 pm',
+            ),
+          ),
+          SizedBox(
+            width: 20.0,
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                '7 june , 2024',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
