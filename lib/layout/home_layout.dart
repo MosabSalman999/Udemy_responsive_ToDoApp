@@ -8,6 +8,7 @@ import 'package:udemy_flutter/modules/done_tasks/done_tasks_screen.dart';
 import 'package:udemy_flutter/modules/new_tasks/new_tasks_screen.dart';
 import 'package:udemy_flutter/shared/components/components.dart';
 import 'package:udemy_flutter/shared/components/constants.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -211,7 +212,11 @@ class _HomeLayoutState extends State<HomeLayout> {
           )
         ],
       ),
-      body: screens[currentIndex],
+      body: ConditionalBuilder(
+        condition: tasks.length > 0,
+        builder: (context) => screens[currentIndex],
+        fallback: (context) => Center(child: CircularProgressIndicator()),
+      ),
     );
   }
 
@@ -248,7 +253,10 @@ class _HomeLayoutState extends State<HomeLayout> {
       },
       onOpen: (database) {
         getDataFromDatabase(database).then((onValue) {
-          tasks = onValue;
+          setState(() {
+            tasks = onValue;
+            print(tasks);
+          });
         });
         print('Database opened');
       },

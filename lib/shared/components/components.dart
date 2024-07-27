@@ -76,15 +76,13 @@ Widget defaultFormField({
       ),
     );
 
-Widget buildTaskItem() => Padding(
+Widget buildTaskItem(Map tasks) => Padding(
       padding: const EdgeInsets.all(20.0),
       child: const Row(
         children: [
           CircleAvatar(
             radius: 40.0,
-            child: Text(
-              '02:00 pm',
-            ),
+            child: Text('tasks'),
           ),
           SizedBox(
             width: 20.0,
@@ -93,11 +91,15 @@ Widget buildTaskItem() => Padding(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                '7 june , 2024',
+                'title',
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),
+              ),
+              Text(
+                'date',
+                style: TextStyle(color: Colors.grey),
               )
             ],
           )
