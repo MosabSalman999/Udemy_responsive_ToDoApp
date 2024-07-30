@@ -5,7 +5,7 @@ import 'modules/bmi/bmi.dart';
 import 'modules/login/login_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 // Stateless
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeLayout(),
     );

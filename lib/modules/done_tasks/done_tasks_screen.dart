@@ -5,7 +5,7 @@ class DoneTasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text(
         'Done Tasks Screen',
         style: TextStyle(

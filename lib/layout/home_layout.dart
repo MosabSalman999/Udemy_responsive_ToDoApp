@@ -74,10 +74,15 @@ class _HomeLayoutState extends State<HomeLayout> {
                 time: timeController.text,
               ).then((onValue) {
                 // ignore: use_build_context_synchronously
+                getDataFromDatabase(database).then((onValue) {
+                  Navigator.pop(context);
+                  setState(() {
+                    isBottomSheetShown = false;
+                    fabIcon = Icons.edit;
 
-                isBottomSheetShown = false;
-                setState(() {
-                  fabIcon = Icons.edit;
+                    tasks = onValue;
+                    print(tasks);
+                  });
                 });
               });
             }
@@ -213,7 +218,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         ],
       ),
       body: ConditionalBuilder(
-        condition: tasks.length > 0,
+        condition: tasks.isNotEmpty,
         builder: (context) => screens[currentIndex],
         fallback: (context) => Center(child: CircularProgressIndicator()),
       ),

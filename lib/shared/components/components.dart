@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_flutter/shared/components/constants.dart';
 
 Widget defaultButton({
   width = double.infinity,
@@ -76,13 +77,13 @@ Widget defaultFormField({
       ),
     );
 
-Widget buildTaskItem(Map tasks) => Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: const Row(
+Widget buildTaskItem(Map model) => const Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Row(
         children: [
           CircleAvatar(
             radius: 40.0,
-            child: Text('tasks'),
+            child: Text('i don\' know '),
           ),
           SizedBox(
             width: 20.0,
@@ -91,7 +92,7 @@ Widget buildTaskItem(Map tasks) => Padding(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'title',
+                'task',
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,

@@ -9,6 +9,8 @@ import 'package:udemy_flutter/shared/components/components.dart';
 // 4 . clean code
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -49,9 +51,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) {
-                        if (value!.isEmpty || value == null) {
+                        if (value!.isEmpty) {
                           return 'email must not be empty';
                         }
+                        return null;
                       },
                       labelText: "Email Address",
                       prefixIcon: Icons.email),
@@ -62,9 +65,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: passwordController,
                       keyboardType: TextInputType.visiblePassword,
                       validator: (value) {
-                        if (value!.isEmpty || value == null) {
+                        if (value!.isEmpty) {
                           return 'password is too short';
                         }
+                        return null;
                       },
                       labelText: 'Password',
                       prefixIcon: Icons.lock,

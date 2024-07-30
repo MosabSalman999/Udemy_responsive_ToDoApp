@@ -5,7 +5,7 @@ class ArchivedTasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text(
         'Archived Tasks Screen',
         style: TextStyle(
