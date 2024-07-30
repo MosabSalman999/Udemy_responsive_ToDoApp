@@ -1,6 +1,7 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:udemy_flutter/layout/home_layout.dart';
-
 import 'modules/bmi/bmi.dart';
 import 'modules/login/login_screen.dart';
 
@@ -10,7 +11,6 @@ void main() {
 
 // Stateless
 // Stateful
-
 // class MyApp
 
 class MyApp extends StatelessWidget {

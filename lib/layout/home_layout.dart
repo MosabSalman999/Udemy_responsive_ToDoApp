@@ -260,7 +260,9 @@ class _HomeLayoutState extends State<HomeLayout> {
         getDataFromDatabase(database).then((onValue) {
           setState(() {
             tasks = onValue;
-            print(tasks);
+            print(tasks[0]);
+
+            // {id: 1, title: mosab, date: Jul 31, 2024, time: 6:33 AM, status: new}
           });
         });
         print('Database opened');
@@ -286,6 +288,6 @@ class _HomeLayoutState extends State<HomeLayout> {
   }
 
   Future<List<Map>> getDataFromDatabase(database) async {
-    return database.rawQuery('SELECT * FROM TASKS');
+    return database.rawQuery('SELECT * FROM tasks');
   }
 }

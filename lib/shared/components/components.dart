@@ -1,4 +1,7 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
+import 'package:udemy_flutter/models/user/user_model.dart';
 import 'package:udemy_flutter/shared/components/constants.dart';
 
 Widget defaultButton({
@@ -77,13 +80,15 @@ Widget defaultFormField({
       ),
     );
 
-Widget buildTaskItem(Map model) => const Padding(
+Widget buildTaskItem(Map model) => Padding(
       padding: EdgeInsets.all(20.0),
       child: Row(
         children: [
           CircleAvatar(
             radius: 40.0,
-            child: Text('i don\' know '),
+            child: Text(
+              "${model['time']}",
+            ),
           ),
           SizedBox(
             width: 20.0,
@@ -92,14 +97,14 @@ Widget buildTaskItem(Map model) => const Padding(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'task',
+                '${model['title']}',
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                'date',
+                '${model['date']}',
                 style: TextStyle(color: Colors.grey),
               )
             ],
