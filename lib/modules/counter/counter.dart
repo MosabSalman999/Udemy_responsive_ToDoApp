@@ -28,9 +28,9 @@ class CounterScreen extends StatelessWidget {
           // ignore: avoid_print
 
           // ignore: avoid_print
-          if (state is CounterMinusState) print('minus state ${state.counter}');
+          //  if (state is CounterMinusState) print('minus state ${state.counter}');
           // ignore: avoid_print
-          if (state is CounterPlusState) print('plus state ${state.counter}');
+          //  if (state is CounterPlusState) print('plus state ${state.counter}');
         },
         builder: (BuildContext context, state) {
           return Scaffold(
