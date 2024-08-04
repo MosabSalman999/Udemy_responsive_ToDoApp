@@ -16,6 +16,9 @@ class AppCubit extends Cubit<AppStates> {
   late Database database;
 
   List<Map> tasks = [];
+  List<Map> newTasks = [];
+  List<Map> doneTasks = [];
+  List<Map> archiveTasks = [];
 
   List<Widget> screens = [
     NewTasksScreen(),
@@ -62,13 +65,7 @@ class AppCubit extends Cubit<AppStates> {
         );
       },
       onOpen: (database) {
-        getDataFromDatabase(database).then((onValue) {
-          tasks = onValue;
-          print(tasks);
-          emit(AppGetDatabaseState());
-
-          //   ctrl + k + c << comment
-        });
+        getDataFromDatabase(database);
         print('Database opened');
       },
     ).then((onValue) {
@@ -78,31 +75,74 @@ class AppCubit extends Cubit<AppStates> {
     ;
   }
 
-  Future insertToDatabase({
+  insertToDatabase({
     required String title,
     required String time,
     required String date,
   }) async {
-    return await database.transaction((txn) => txn
+    return database.transaction((txn) => txn
             .rawInsert(
                 'INSERT INTO TASKS(title , date , time ,status) VALUES("$title","$date","$time","new")')
             .then((onValue) {
-          print('$onValue inserted successfully');
+          //  print('$onValue inserted successfully');
           emit(AppInsertDatabaseState());
 
-          getDataFromDatabase(database).then((onValue) {
-            tasks = onValue;
-            print(tasks);
-
-            emit(AppGetDatabaseState());
-          });
+          getDataFromDatabase(database);
         }).catchError((error) {
           print('Error When Inserting New Record ${error.toString()}');
         }));
   }
 
-  Future<List<Map>> getDataFromDatabase(database) async {
-    return database.rawQuery('SELECT * FROM TASKS');
+  void getDataFromDatabase(database) {
+    newTasks = [];
+    doneTasks = [];
+    archiveTasks = [];
+
+    emit(AppGetDatabaseLoadingState());
+
+    database.rawQuery('SELECT * FROM TASKS').then((onValue) {
+      tasks = onValue;
+      print(tasks);
+
+      tasks.forEach((Element) {
+        if (Element['status'] == 'new') {
+          newTasks.add(Element);
+        } else if (Element['status'] == 'done') {
+          doneTasks.add(Element);
+        } else
+          archiveTasks.add(Element);
+      });
+
+      emit(AppGetDatabaseState());
+
+      //   ctrl + k + c << comment
+    });
+    ;
+  }
+
+  void updateData({
+    required String status,
+    required int id,
+  }) {
+    database.rawUpdate(
+      'UPDATE tasks SET status = ? WHERE id = ?',
+      ['$status', id],
+    ).then((onValue) {
+      getDataFromDatabase(database);
+      emit(AppUpdateDatabaseState());
+    });
+  }
+
+  void deleteDatabase({
+    required int id,
+  }) async {
+    database.rawDelete(
+      'DELETE FROM tasks WHERE id = ?',
+      [id],
+    ).then((onValue) {
+      getDataFromDatabase(database);
+      emit(AppDeleteDatabaseState());
+    });
   }
 
   bool isBottomSheetShown = false;

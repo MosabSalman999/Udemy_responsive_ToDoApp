@@ -48,24 +48,6 @@ class HomeLayout extends StatelessWidget {
                         title: titleController.text,
                         time: timeController.text,
                         date: dateController.text);
-                    // insertToDatabase(
-                    //   title: titleController.text,
-                    //   date: dateController.text,
-                    //   time: timeController.text,
-                    // ).then((onValue) {
-                    //   // ignore: use_build_context_synchronously
-                    //   getDataFromDatabase(database).then((onValue) {
-                    //     Navigator.pop(context);
-                    //     /*  setState(() {
-                    //     isBottomSheetShown = false;
-                    //     fabIcon = Icons.edit;
-
-                    //     tasks = onValue;
-                    //     print(tasks);
-                    //   });
-                    //   */
-                    //   });
-                    // });
                   }
                 } else {
                   scaffoldKey.currentState
@@ -192,7 +174,7 @@ class HomeLayout extends StatelessWidget {
               ],
             ),
             body: ConditionalBuilder(
-              condition: true,
+              condition: state is! AppGetDatabaseLoadingState,
               builder: (context) => cubit.screens[cubit.currentIndex],
               fallback: (context) => Center(child: CircularProgressIndicator()),
             ),
