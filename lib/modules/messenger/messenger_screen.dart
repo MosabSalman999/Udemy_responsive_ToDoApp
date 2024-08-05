@@ -200,9 +200,9 @@ class MessengerScreen extends StatelessWidget {
         ],
       );
 
-  Widget buildStoryItem() => SizedBox(
+  Widget buildStoryItem() => const SizedBox(
         width: 60.0,
-        child: const Column(
+        child: Column(
           children: [
             Stack(
               alignment: AlignmentDirectional.bottomEnd,
